@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCWg-n9BFPXAeNMrj0nlh-obovBActGmG8",
+  apiKey: "AIzaSyCWg-n9BFPXAeNMrj0nlh-obovBActGmG8", // pragma: allowlist secret
   authDomain: "svelte-course-fireship-5e756.firebaseapp.com",
   projectId: "svelte-course-fireship-5e756",
   storageBucket: "svelte-course-fireship-5e756.appspot.com",
