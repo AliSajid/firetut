@@ -11,3 +11,6 @@ vite.config.ts.timestamp-*
 service-account.json
 *.log
 emulator-data/
+/test-results/
+/playwright-report/
+/playwright/.cache/
