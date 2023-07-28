@@ -9,6 +9,12 @@
 
     let debounceTimer: NodeJS.Timeout;
 
+    const re = /^(?=[a-zA-Z0-9._]{3,16}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
+
+    $: isValid = username?.length > 2 && username?.length < 16 && re.test(username);
+    $: isTouched = username?.length > 0;
+    $: isTaken = isValid && !isAvailable && !loading;
+
 /**
  * Checks the availability of a username by querying the "usernames" collection in Firestore.
  * Sets the `isAvailable` variable to `true` if the username is available, and `false` otherwise.
@@ -70,14 +76,24 @@ async function confirmUsername() {
         Username
     </h2>
 
-    <form on:submit|preventDefault={confirmUsername} class="w-2/5">
-        <input type="text" placeholder="Username" class="input w-full" bind:value={username} on:input={checkAvailability} />
+    <form on:submit|preventDefault={confirmUsername} class="w-2/5 my-5">
+        <input type="text" placeholder="Username" class="input w-full" bind:value={username} on:input={checkAvailability} class:input-error={(!isValid && isTouched)}
+        class:input-warning={isTaken}
+        class:input-success={isAvailable && isValid && !loading} />
 
         {#if loading}
         <p class="text-info">Checking availability...</p>
-        {:else if !isAvailable}
-        <p>{username} is not available</p>
-        {:else}
+        {/if}
+
+        {#if !isValid && isTouched}
+        <p class="text-error text-sm">Username must be between 3 and 16 characters long.</p>
+        {/if}
+
+        {#if isValid && !isAvailable && !loading}
+        <p class="text-warning text-sm">@{username} is not available</p>
+        {/if}
+
+        {#if isAvailable && isValid && !loading}
         <p>{username} is available</p>
         <button class="btn btn-success">Confirm username @{username}</button>
         {/if}
