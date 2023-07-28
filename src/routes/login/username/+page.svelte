@@ -39,7 +39,29 @@
  * If the username is not available, sets the `usernameConfirmed` variable to `false` and displays an error message.
  */
 async function confirmUsername() {
+    console.info("Confirming username", username);
 
+    const batch = writeBatch(db);
+    batch.set(doc(db, "usernames", username), { uid: $user?.uid });
+    batch.set(
+        doc(db, "users", $user!.uid), {
+            username,
+            photoURL: $user?.photoURL ?? null,
+            published: true,
+            bio: "Placeholder bio",
+            links: [
+                {
+                    title: "Website",
+                    url: "https://svelte.dev",
+                    icon: "globe"
+                }
+            ]
+        });
+
+        await batch.commit();
+
+        username = "";
+        isAvailable = false;
 }
 </script>
 
