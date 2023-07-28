@@ -4,7 +4,7 @@
 
 /**
  * Signs in the user using Google OAuth authentication.
- * @return {Promise<void>} A promise that resolves with the user credential object if the sign-in is successful.
+ * @returns A promise that resolves with the user credential object if the sign-in is successful.
  * The user credential object contains information about the signed-in user, such as their user ID and access token.
  * If the sign-in is unsuccessful, the promise is rejected with an error object that contains information about the error.
  */

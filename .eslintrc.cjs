@@ -6,6 +6,7 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
     'google',
+    'plugin:jsdoc/recommended-typescript',
     'plugin:svelte/recommended',
     'prettier'
   ],
@@ -34,6 +35,8 @@ module.exports = {
       rules: {
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "valid-jsdoc": "off",
+        "require-jsdoc": "off",
       }
     }
   ]

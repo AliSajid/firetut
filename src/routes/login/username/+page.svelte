@@ -1,6 +1,6 @@
 <script lang="ts">
     import AuthCheck from "$lib/components/AuthCheck.svelte";
-    import { db, user } from "$lib/firebase";
+    import { db, user, userData } from "$lib/firebase";
     import {doc, getDoc, writeBatch} from "firebase/firestore";
 
     let username = "";
@@ -76,6 +76,13 @@ async function confirmUsername() {
         Username
     </h2>
 
+    {#if $userData?.username}
+
+    <p class="text-xl">
+        You already have a username: <span class="font-bold text-success text-2xl">{$userData.username}</span>
+        </p>
+{:else}
+
     <form on:submit|preventDefault={confirmUsername} class="w-2/5 my-5">
         <input type="text" placeholder="Username" class="input w-full" bind:value={username} on:input={checkAvailability} class:input-error={(!isValid && isTouched)}
         class:input-warning={isTaken}
@@ -98,4 +105,5 @@ async function confirmUsername() {
         <button class="btn btn-success">Confirm username @{username}</button>
         {/if}
     </form>
+    {/if}
 </AuthCheck>
