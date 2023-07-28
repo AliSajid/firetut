@@ -13,7 +13,7 @@
     "format": "prettier --plugin-search-dir . --write .",
     "test:integration": "playwright test",
     "test:unit": "vitest",
-    "emulate": "firebase emulators:start"
+    "emulate": "firebase emulators:start --export-on-exit=./emulator-data --import=./emulator-data"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
