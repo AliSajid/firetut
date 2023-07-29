@@ -58,6 +58,14 @@
 <main class="max-w-xl mx-auto">
   {#if $userData?.username == $page.params.username}
     <h1 class="mx-2 text-2xl font-bold mt-8 mb-4 text-center">Edit Your Profile</h1>
+    <ul>
+      {#each $userData?.links as link}
+        <li class="my-4">
+          <UserLink title={link.title} icon={link.icon} url={link.url} />
+          <button class="btn btn-xs btn-error" on:click={() => deleteLink(link)}>Delete</button>
+        </li>
+      {/each}
+    </ul>
     {#if showForm}
       <form class="bg-base-200 p-6 w-full mx-auto rounded-xl" on:submit|preventDefault={addLink}>
         <select name="icon" class="select select-sm" bind:value={$formData.icon}>
