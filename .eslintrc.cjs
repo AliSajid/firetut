@@ -10,6 +10,7 @@ module.exports = {
     'plugin:svelte/recommended',
     'plugin:svelte/prettier',
     'prettier',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
