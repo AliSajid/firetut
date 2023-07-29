@@ -31,7 +31,7 @@
   <ul class="list-none">
     {#each data.links as item}
       <li>
-        <UserLink {...item}></UserLink>
+        <UserLink title={item.title} icon={item.icon} url={item.url}></UserLink>
       </li>
     {/each}
   </ul>
