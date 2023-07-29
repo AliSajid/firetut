@@ -25,6 +25,6 @@ export const load: PageLoad = async ({ params }) => {
     photoURL: userData.photoURL,
     displayName: userData.displayName,
     bio: userData.bio,
-    links: userData.links ?? [{ name: 'Website', url: 'https://example.com' }],
+    links: userData.links ?? [{ icon: 'globe', name: 'Website', url: 'https://example.com' }],
   };
 };
