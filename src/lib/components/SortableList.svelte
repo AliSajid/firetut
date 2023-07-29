@@ -71,7 +71,7 @@
   <p class="text-center my-12 text-lg font-bold">No links yet. Add one below!</p>
 {/if}
 
-<style>
+<style lang="postcss">
   .over {
     @apply scale-105 border-gray-400;
   }
