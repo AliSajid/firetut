@@ -1,5 +1,7 @@
-import { redirect } from "@sveltejs/kit";
+/** @format */
+
+import { redirect } from '@sveltejs/kit';
 
 export function load() {
-    throw redirect(308, "/login");
+  throw redirect(308, '/login');
 }

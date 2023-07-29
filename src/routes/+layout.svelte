@@ -1,5 +1,6 @@
+<!-- @format -->
 <script lang="ts">
-    import "../app.css";
+  import '../app.css';
 </script>
 
 <div class="min-h-screen flex flex-col">

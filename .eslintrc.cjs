@@ -1,3 +1,5 @@
+/** @format */
+
 module.exports = {
   root: true,
   extends: [
@@ -8,36 +10,37 @@ module.exports = {
     'google',
     'plugin:jsdoc/recommended-typescript',
     'plugin:svelte/recommended',
-    'prettier'
+    'plugin:svelte/prettier',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 2020,
-    extraFileExtensions: ['.svelte']
+    extraFileExtensions: ['.svelte'],
   },
   env: {
     browser: true,
     es2017: true,
-    node: true
+    node: true,
   },
   overrides: [
     {
       files: ['*.svelte'],
       parser: 'svelte-eslint-parser',
       parserOptions: {
-        parser: '@typescript-eslint/parser'
-      }
+        parser: '@typescript-eslint/parser',
+      },
     },
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "valid-jsdoc": "off",
-        "require-jsdoc": "off",
-      }
-    }
-  ]
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        'valid-jsdoc': 'off',
+        'require-jsdoc': 'off',
+      },
+    },
+  ],
 };

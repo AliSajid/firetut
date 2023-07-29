@@ -1,3 +1,5 @@
+# @format
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0 # Use the ref you want to point at
@@ -23,7 +25,7 @@ repos:
           - 'eslint@v8.28.0'
           - '@typescript-eslint/eslint-plugin@5.45.0'
           - 'eslint-plugin-svelte@2.32.4'
-          - 'prettier@2.8.8'
+          - 'prettier@3.0.0'
         files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         types: [file]
   - repo: https://github.com/pre-commit/mirrors-prettier
@@ -31,8 +33,8 @@ repos:
     hooks:
       - id: prettier
         additional_dependencies:
-          - prettier@2.1.2
-          - prettier-plugin-svelte@2.10.1
+          - prettier@3.0.0
+          - prettier-plugin-svelte@3.0.3
           - prettier-plugin-tailwindcss@0.4.1
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.1
