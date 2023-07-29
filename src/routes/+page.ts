@@ -1,5 +1,3 @@
-/** @format */
-
 import { redirect } from '@sveltejs/kit';
 
 export function load() {

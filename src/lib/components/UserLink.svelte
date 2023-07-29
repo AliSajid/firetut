@@ -1,4 +1,3 @@
-<!-- @format -->
 <script lang="ts">
   export let icon = 'default';
   export let url = 'https://example.com';

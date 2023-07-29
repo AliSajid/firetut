@@ -1,4 +1,3 @@
-<!-- @format -->
 <script lang="ts">
   import AuthCheck from '$lib/components/AuthCheck.svelte';
   import { db, user, userData } from '$lib/firebase';

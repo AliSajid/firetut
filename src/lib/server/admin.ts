@@ -1,5 +1,3 @@
-/** @format */
-
 import { getAuth } from '@firebase/auth';
 import { getFirestore } from '@firebase/firestore';
 import { FB_PRIVATE_KEY, FB_CLIENT_EMAIL, FB_PROJECT_ID } from '$env/static/private';

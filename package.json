@@ -16,6 +16,7 @@
     "emulate": "firebase emulators:start --export-on-exit=./emulator-data --import=./emulator-data"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.95",
     "@playwright/test": "^1.36.2",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.20.4",
@@ -44,12 +45,12 @@
     "tailwindcss": "^3.3.3",
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
+    "unplugin-icons": "^0.16.5",
     "vite": "^4.4.2",
     "vitest": "^0.33.0"
   },
   "type": "module",
   "dependencies": {
-    "@icons-pack/svelte-simple-icons": "^3.0.0",
     "firebase": "^10.1.0",
     "firebase-admin": "^11.10.1"
   }

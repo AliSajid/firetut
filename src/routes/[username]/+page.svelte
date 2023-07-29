@@ -1,4 +1,3 @@
-<!-- @format -->
 <script lang="ts">
   import type { PageData } from './$types';
   import UserLink from '$lib/components/UserLink.svelte';

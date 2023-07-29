@@ -1,13 +1,11 @@
-/** @format */
-
 module.exports = {
-  'insertPragma': true,
+  'insertPragma': false,
   'overrides': [
     {
       'files': '*.svelte',
       'options': {
         'parser': 'svelte',
-        'insertPragma': true,
+        'insertPragma': false,
       },
     },
     {

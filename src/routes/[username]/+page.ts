@@ -1,5 +1,3 @@
-/** @format */
-
 import { collection, getDocs, limit, query, where } from 'firebase/firestore';
 import type { PageLoad } from '../$types';
 import { db } from '$lib/firebase';
