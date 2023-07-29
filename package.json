@@ -14,8 +14,8 @@
     "test:integration": "playwright test",
     "test:unit": "vitest",
     "emulate": "firebase emulators:start --export-on-exit=./emulator-data --import=./emulator-data",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006 -s ../static",
+    "build-storybook": "storybook build -s ../static"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.95",
