@@ -2,6 +2,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import UserLink from '$lib/components/UserLink.svelte';
+  import SortableList from '$lib/components/SortableList.svelte';
   import { db, user, userData } from '$lib/firebase';
   import { writable } from 'svelte/store';
   import { arrayRemove, arrayUnion, doc, setDoc, updateDoc } from 'firebase/firestore';
@@ -41,6 +42,17 @@
     showForm = false;
   }
 
+  function cancelLink() {
+    formData.set(formDefaults);
+    showForm = false;
+  }
+
+  function sortList(e: CustomEvent) {
+    const newList = e.detail;
+    const userRef = doc(db, 'users', $user!.uid);
+    setDoc(userRef, { links: newList }, { merge: true });
+  }
+
   async function deleteLink(item: any) {
     const userRef = doc(db, 'users', $user!.uid);
 
@@ -48,24 +60,21 @@
       links: arrayRemove(item),
     });
   }
-
-  function cancelLink() {
-    formData.set(formDefaults);
-    showForm = false;
-  }
 </script>
 
 <main class="max-w-xl mx-auto">
   {#if $userData?.username == $page.params.username}
     <h1 class="mx-2 text-2xl font-bold mt-8 mb-4 text-center">Edit Your Profile</h1>
-    <ul>
-      {#each $userData?.links as link}
-        <li class="my-4">
-          <UserLink title={link.title} icon={link.icon} url={link.url} />
-          <button class="btn btn-xs btn-error" on:click={() => deleteLink(link)}>Delete</button>
-        </li>
-      {/each}
-    </ul>
+    <SortableList list={$userData?.links} on:sort={sortList} let:item let:index>
+      <div class="group relative">
+        <UserLink {...item} />
+        <button
+          on:click={() => deleteLink(item)}
+          class="btn btn-xs btn-error invisible group-hover:visible transition-all absolute -right-6 bottom-10"
+          >Delete</button
+        >
+      </div>
+    </SortableList>
     {#if showForm}
       <form class="bg-base-200 p-6 w-full mx-auto rounded-xl" on:submit|preventDefault={addLink}>
         <select name="icon" class="select select-sm" bind:value={$formData.icon}>
