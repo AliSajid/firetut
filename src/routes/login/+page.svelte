@@ -14,7 +14,6 @@
     console.log(credential.user.toJSON());
 
     const idToken = await credential.user.getIdToken();
-    console.log(idToken);
 
     const res = await fetch('/api/signin', {
       method: 'POST',
