@@ -1,18 +1,18 @@
-import { getAuth } from '@firebase/auth';
-import { getFirestore } from '@firebase/firestore';
+import { getAuth } from 'firebase-admin/auth';
+import { getFirestore } from 'firebase-admin/firestore';
 import { FB_PRIVATE_KEY, FB_CLIENT_EMAIL, FB_PROJECT_ID } from '$env/static/private';
 import pkg from 'firebase-admin';
 
-interface FirebaseConfig {
+interface FirebaseCredentials {
   projectId: string;
   privateKey: string;
   clientEmail: string;
 }
 
 try {
-  const firebaseConfig: FirebaseConfig = {
+  const firebaseConfig: FirebaseCredentials = {
     projectId: FB_PROJECT_ID,
-    privateKey: FB_PRIVATE_KEY,
+    privateKey: FB_PRIVATE_KEY.replace(/\\n/g, '\n'),
     clientEmail: FB_CLIENT_EMAIL,
   };
   pkg.initializeApp({

@@ -10,9 +10,26 @@
    */
   async function signInWithGoogle(): Promise<void> {
     const provider = new GoogleAuthProvider();
-    const user = await signInWithPopup(auth, provider);
+    const credential = await signInWithPopup(auth, provider);
+    console.log(credential.user.toJSON());
 
-    console.log(user);
+    const idToken = await credential.user.getIdToken();
+    console.log(idToken);
+
+    const res = await fetch('/api/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ idToken }),
+    });
+  }
+
+  async function signOutSSR(): Promise<void> {
+    const res = await fetch('/api/signin', {
+      method: 'DELETE',
+    });
+    await signOut(auth);
   }
 </script>
 
@@ -21,7 +38,7 @@
 {#if $user}
   <h2 class="card-title">Welcome, {$user.displayName}</h2>
   <p class="text-center text-success">You are successfully logged in</p>
-  <button class="btn btn-circle btn-danger btn-wide" on:click={() => signOut(auth)}>Sign out</button>
+  <button class="btn btn-circle btn-danger btn-wide" on:click={signOutSSR}>Sign out</button>
 {:else}
   <button class="btn btn-circle btn-primary btn-wide" on:click={signInWithGoogle}>Sign in with Google</button>
 {/if}
