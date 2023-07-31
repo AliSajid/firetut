@@ -14,3 +14,4 @@ emulator-data/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.firebase/
